@@ -1,0 +1,20 @@
+{
+  "name": "complexifier",
+  "version": "1.0.0",
+  "description": "The repository for all things complexifier.com related",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zbirkenbuel/complexifier.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zbirkenbuel/complexifier/issues"
+  },
+  "homepage": "https://github.com/zbirkenbuel/complexifier#readme"
+}
