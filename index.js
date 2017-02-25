@@ -12,6 +12,11 @@ const server = restify.createServer();
 server.get('/hello/:name', respond);
 server.head('/hello/:name', respond);
 
+server.get(/\//, restify.serveStatic({
+  directory: './static',
+  default: 'index.html'
+}));
+
 server.listen(port, (err) => {
   if (err) {
     return console.log(`Unable to start server on port ${port}`, err)
