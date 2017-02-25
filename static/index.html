@@ -1,1 +1,45 @@
-yo, dawg
+<html>
+  <head>
+    <title>
+      Complexifier
+    </title>
+    <script>
+      function complexify(s) {
+        //alert('complexifying ' + s);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/transform/' + s, true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+          var status = xhr.status;
+          if (status == 200) {
+            display(null, xhr.response);
+          } else {
+            display(status);
+          }
+        };
+        xhr.send();
+
+        return false;
+      }
+
+      function display(err, text) {
+        if (err) {
+          // Display error to user
+          alert(err);
+        } else {
+          // Show the complexified string
+          document.getElementById('result').textContent = text;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form onSubmit="complexify(this.text.value)">
+      <input id="text" type="text" value="the sun has fire and makes heat"><BR>
+      <input type="button" value="Complexify!" onClick="complexify(document.getElementById('text').value)">
+    </form>
+    <BR><BR>
+    <div id="result">
+    </div>
+  </body>
+</html>
