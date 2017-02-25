@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zbirkenbuel/complexifier/issues"
   },
-  "homepage": "https://github.com/zbirkenbuel/complexifier#readme"
+  "homepage": "https://github.com/zbirkenbuel/complexifier#readme",
+  "dependencies": {
+    "restify": "^4.3.0"
+  }
 }

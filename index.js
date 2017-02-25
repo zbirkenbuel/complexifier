@@ -1,15 +1,20 @@
-const http = require('http')  
+const http = require('http')
 const port = process.env.PORT || 8080
 
-const requestHandler = (request, response) => {  
-  response.end('OK')
+const restify = require('restify');
+
+const respond = (request, response, next) => {
+  response.send('hello ' + request.params.name)
+  next()
 }
 
-const server = http.createServer(requestHandler)
+const server = restify.createServer();
+server.get('/hello/:name', respond);
+server.head('/hello/:name', respond);
 
-server.listen(port, (err) => {  
+server.listen(port, (err) => {
   if (err) {
-    return console.log('something bad happened', err)
+    return console.log(`Unable to start server on port ${port}`, err)
   }
 
   console.log(`server is listening on ${port}`)
