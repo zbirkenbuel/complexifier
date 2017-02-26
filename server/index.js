@@ -1,4 +1,5 @@
 const http = require('http')
+const path = require('path')
 const port = process.env.PORT || 8080
 
 const restify = require('restify');
@@ -31,8 +32,13 @@ const transform = (request, response, next) => {
 const server = restify.createServer();
 server.get('/transform/:s', transform);
 
+// serve compiled js/css/etc
+server.get(/\/js\/.*/, restify.serveStatic({
+  directory: path.resolve(__dirname, '../app-compiled')
+}));
+// root static files
 server.get(/\//, restify.serveStatic({
-  directory: './static',
+  directory: path.resolve(__dirname, '../static'),
   default: 'index.html'
 }));
 

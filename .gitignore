@@ -35,3 +35,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# build temporary files
+.tmp
+
+# compiled directories
+app-compiled/js/*.js

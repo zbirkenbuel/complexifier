@@ -4,7 +4,10 @@
   "description": "The repository for all things complexifier.com related",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "postinstall": "npm run babel-app && npm run browserify-app",
+    "babel-app": "./node_modules/.bin/babel app -d .tmp",
+    "browserify-app": "./node_modules/.bin/browserify .tmp/index.js -o app-compiled/js/main.js --standalone complexifier",
+    "start": "node server/index.js",
     "test": "echo \"No tests specified yet\" && exit 0"
   },
   "repository": {
@@ -18,6 +21,12 @@
   },
   "homepage": "https://github.com/zbirkenbuel/complexifier#readme",
   "dependencies": {
-    "restify": "^4.3.0"
+    "restify": "^4.3.0",
+    "whatwg-fetch": "^2.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-env": "^1.1.10",
+    "browserify": "^14.1.0"
   }
 }
